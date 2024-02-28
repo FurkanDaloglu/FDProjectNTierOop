@@ -1,0 +1,47 @@
+﻿@model List<Job>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+
+<h1>Meslekler</h1>
+
+<p>
+    <a asp-controller="Job" asp-action="AddJob" class="btn btn-outline-success">Yeni Meslek Ekle</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Meslek Id
+            </th>
+            <th>
+                Meslek Adı
+            </th>
+            <th>
+                Meslek Detayları
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                <a asp-action="DetailJob" asp-route-id="@item.JobID" class="btn btn-outline-warning">Detaylar</a>
+            </td>
+            <td>
+                <a asp-action="UpdateJob" asp-route-id="@item.JobID" class="btn btn-outline-primary">Güncelle</a> |
+                <a asp-action="DeleteJob" asp-route-id="@item.JobID" class="btn btn-outline-danger">Sil</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

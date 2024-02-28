@@ -1,0 +1,53 @@
+﻿@model List<Product>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+
+<h1>Ürünler</h1>
+
+<p>
+    <a asp-controller="Product" asp-action="AddProduct" class="btn btn-outline-success">Yeni Ürün Ekle</a>
+</p>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>
+                Ürün Adı
+            </th>
+            <th>
+                Fiyat
+            </th>
+            <th>
+                Stok
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stock)
+            </td>
+            <td>
+                <a asp-controller="Product" asp-action="UpdateProduct" asp-route-id="@item.Id" class="btn btn-outline-primary">Güncelle</a> |
+                <a asp-controller="Product" asp-action="DeleteProduct" asp-route-id="@item.Id" class="btn btn-outline-danger">Sil</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+

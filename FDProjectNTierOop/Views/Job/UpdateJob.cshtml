@@ -1,0 +1,31 @@
+﻿@model Job
+
+@{
+    ViewData["Title"] = "UpdateJob";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+
+
+<h4>Güncellecek Meslek</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="UpdateJob">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="JobID" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Meslek Adı</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Güncelle" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<br />
+<div>
+    <a asp-controller="Job" asp-action="Index" class="btn btn-danger">Mesleklere Geri Dön</a>
+</div>
+

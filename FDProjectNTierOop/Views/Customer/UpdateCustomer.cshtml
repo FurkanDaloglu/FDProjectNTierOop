@@ -1,0 +1,42 @@
+﻿@model EntityLayer.Concrete.Customer
+
+@{
+    ViewData["Title"] = "UpdateCustomer";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+
+
+
+<h4>Güncellenecek Kullanıcı</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="UpdateCustomer">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Kullanıcı Adı</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="City" class="control-label">Şehir</label>
+                <input asp-for="City" class="form-control" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="JobID" class="control-label"></label>
+                <select asp-for="JobID" class="form-control" asp-items="ViewBag.jobs"></select>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Güncelle" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<br />
+<div>
+    <a asp-controller="Customer" asp-action="Index" class="btn btn-danger">Kullanıcılara Geri Dön</a>
+</div>
+
